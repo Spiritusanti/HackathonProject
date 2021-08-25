@@ -14,17 +14,27 @@ then trigger animation based on result of match up
 */
 const GameComponent: FC = () => {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [match, setMatch] = useState<boolean>(false);
 
     // Dev toggle mode handler - remove before final launch
     const devToggleHandler = (): void => {
         setIsPlaying(!isPlaying);
+    }
+
+    // trigger match handler
+    const triggerMatch = (): void => {
+        setMatch(true);
+    }
+    const resetMatch = (): void => {
+        setMatch(false)
     }
     return (
         <section>
             {!isPlaying && <PlayerForm />}
             {isPlaying && <div>
                 <Player />
-                <Opponent />
+                <Opponent startMatch={match} endMatch={resetMatch} />
+                <button onClick={triggerMatch}>Trigger Match</button>
             </div>}
             <button onClick={devToggleHandler}>Toggle Mode for Dev</button>
         </section>
