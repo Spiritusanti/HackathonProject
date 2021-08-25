@@ -2,8 +2,12 @@ import { FC, FormEvent, useRef, useState } from "react";
 import Image from 'next/image'
 import playerImage from '../../assests/xelor_by_yuejeancarlos19-d6mvio3.jpg';
 
-const Player: FC = () => {
-    const [playerMove, setPlayerMove] = useState<string>();
+interface playerProps {
+    setSelection: (selection: string) => void
+}
+
+const Player: FC<playerProps> = (props) => {
+    const [playerMove, setPlayerMove] = useState<string>('');
 
     // onChange Handler
     const onInputSelection = (event: FormEvent<HTMLInputElement>) => {
@@ -13,7 +17,10 @@ const Player: FC = () => {
     // submit handler
     const playerChoiceSubmitHandler = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        console.log(playerMove);
+        if (playerMove === '') {
+            return;
+        }
+        props.setSelection(playerMove)
     }
     return (
         <section>
