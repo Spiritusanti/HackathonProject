@@ -1,4 +1,6 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import Opponent from "./Opponent";
+import Player from "./Player";
 import PlayerForm from "./PlayerForm";
 /*
 Need to build in form for user to select rounds and then either Rock, Paper, or Scissors
@@ -11,9 +13,20 @@ then trigger animation based on result of match up
 --> after a timeout add option to play again or quit.
 */
 const GameComponent: FC = () => {
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
+    // Dev toggle mode handler - remove before final launch
+    const devToggleHandler = (): void => {
+        setIsPlaying(!isPlaying);
+    }
     return (
         <section>
-            <PlayerForm />
+            {!isPlaying && <PlayerForm />}
+            {isPlaying && <div>
+                <Player />
+                <Opponent />
+            </div>}
+            <button onClick={devToggleHandler}>Toggle Mode for Dev</button>
         </section>
     )
 }
