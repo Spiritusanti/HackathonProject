@@ -1,14 +1,15 @@
 import { FC } from "react";
+import Link from 'next/link';
 
 const Nav: FC = () => {
     return (
         <nav>
             <ul>
                 <li>
-                    <a href="/">Home</a>
+                    <Link href="/">Home</Link>
                 </li>
                 <li>
-                    <a href="/game">Play</a>
+                    <Link href="/game">Play</Link>
                 </li>
             </ul>
         </nav>
