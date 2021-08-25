@@ -1,33 +1,24 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import playerImage from '../../assests/xelor_by_yuejeancarlos19-d6mvio3.jpg';
 
 interface opponentProps {
-    startMatch: boolean,
-    endMatch: () => void,
     setSelection: (selection: string) => void
 }
 
-const Opponent: FC<opponentProps> = (props) => {
-    const [opponentChoice, setOpponentChoice] = useState<string>('')
+const Opponent: FC<opponentProps> = ({ setSelection }) => {
+    const randomOpponentSelection = useCallback(() => {
+        const moveOptions = ["rock", "paper", "scissors"]
+        const randomChoice = Math.floor(Math.random() * moveOptions.length);
+        setSelection(moveOptions[randomChoice])
+    }, [setSelection]);
+
 
     useEffect(() => {
-        if (!props.startMatch) {
-            return
-        }
-        const randomOpponentSelection = () => {
-            const moveOptions = ["rock", "paper", "scissors"]
-            const randomChoice = Math.floor(Math.random() * moveOptions.length);
-            setOpponentChoice(moveOptions[randomChoice]);
-        };
         randomOpponentSelection();
-        if (opponentChoice) {
-            props.setSelection(opponentChoice)
-        }
+    }, [randomOpponentSelection]);
 
-        props.endMatch();
-        return;
-    }, [props, opponentChoice])
+
 
     return (
         <section>
