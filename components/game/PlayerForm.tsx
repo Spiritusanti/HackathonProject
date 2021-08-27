@@ -1,8 +1,10 @@
 // react imports
-import React, { FC, FormEvent, useState } from "react";
+import React, { FC, FormEvent, useState, Fragment } from "react";
 // redux imports
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GameActions } from "../../redux/game-reducer";
+import { RootState } from "../../redux/store";
+
 // playerInput Interface Type
 export interface playerInput {
     playerName: string,
@@ -15,6 +17,7 @@ const PlayerForm: FC = () => {
     const [numberOfRounds, setNumberOfRounds] = useState<number>(1);
     const [enteredBackground, setEnteredBackground] = useState<string>('#ccc');
     const [error, setError] = useState<string | boolean>(false);
+    const storedPlayerName = useSelector((state: RootState) => state.game.playerName)
     const dispatch = useDispatch()
 
 
@@ -62,8 +65,12 @@ const PlayerForm: FC = () => {
             <h1>Set your options!</h1>
             <ul>
                 <li>
-                    <label htmlFor="playername">Add your name: </label>
-                    <input type="text" id="playername" onChange={playerNameHandler} value={playerName} />
+                    {storedPlayerName === '' ? <Fragment>
+                        <label htmlFor="playername">Add your name: </label>
+                        <input type="text" id="playername" onChange={playerNameHandler} value={playerName} />
+                    </Fragment>
+                        : <Fragment><label htmlFor="storedPlayer">Player: </label> <h1>{storedPlayerName}</h1></Fragment>
+                    }
                     {error && <p style={{ color: 'red' }}>Please enter a name</p>}
                 </li>
                 <li>
@@ -71,7 +78,8 @@ const PlayerForm: FC = () => {
                     <select name="rounds" id="rounds" onChange={roundsHandler} value={numberOfRounds}>
                         <option value="choose-option">Choose an option</option>
                         <option value="3">3</option>
-                        <option value="6">6</option>
+                        <option value="5">5</option>
+                        <option value="6">7</option>
                         <option value="9">9</option>
                     </select>
                 </li>

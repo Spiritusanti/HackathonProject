@@ -19,7 +19,7 @@ const ScoreDisplay: FC = () => {
                     <h1 id="player-score">{player}</h1>
                 </li>
                 <li>
-                    <label htmlFor="opponent-score">Score: </label>
+                    <label htmlFor="opponent-score">Opponent: </label>
                     <h1 id="opponent-score">{opponent}</h1>
                 </li>
             </ul>

@@ -14,6 +14,7 @@ const Player: FC = () => {
     const [playerMove, setPlayerMove] = useState<string>('');
     const dispatch = useDispatch()
     const playerReady = useSelector((state: RootState) => state.game.playerReady);
+    const playerName = useSelector((state: RootState) => state.game.playerName);
 
     // onChange Handler
     const onInputSelection = (event: FormEvent<HTMLInputElement>) => {
@@ -60,7 +61,7 @@ const Player: FC = () => {
     return (
         <section>
             <div className="player-info">
-                <h1>Player Name</h1>
+                <h1>{playerName}</h1>
                 <Image src={playerImage} alt="player avatar" width={"250px"} height={"250px"} />
             </div>
             {content}

@@ -1,6 +1,6 @@
 // react/nextjs imports
 import type { NextPage } from 'next'
-import { useState } from 'react';
+import { Fragment } from 'react';
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
 import Header from '../components/header';
@@ -17,12 +17,18 @@ import Lose from '../components/game/Lose';
 
 const Game: NextPage = () => {
     const winner = useSelector((state: RootState) => state.game.winner);
+    const scores = useSelector((state: RootState) => state.game.scores);
+    const isPlaying = useSelector((state: RootState) => state.game.isPlaying);
     const dispatch = useDispatch()
-
 
     // next match handler
     const resetWinner = (): void => {
-        dispatch(GameActions.nextRound);
+        dispatch(GameActions.nextRound());
+    }
+
+    // newGame Handler
+    const newGame = (): void => {
+        dispatch(GameActions.newGame());
     }
 
     let content;
@@ -44,6 +50,26 @@ const Game: NextPage = () => {
     }
     if (winner === null) {
         content = <GameComponent />
+    }
+
+    if (isPlaying && scores.player > scores.rounds / 2) {
+        content = <Fragment>
+            <h1>You are victoriuos!</h1>
+            <button onClick={newGame}>Play again!</button>
+        </Fragment>
+    }
+    if (isPlaying && scores.opponent > scores.rounds / 2) {
+        content = <Fragment>
+            <h1>You have been vanquished!</h1>
+            <button onClick={newGame}>Play again!</button>
+        </Fragment>
+    }
+    if (isPlaying && scores.rounds === 0 && scores.player === scores.opponent) {
+        content = <Fragment>
+            {/* add a sudden death mode? */}
+            <h1>Its a tie! Nobody wins!</h1>
+            <button onClick={newGame}>Play again!</button>
+        </Fragment>
     }
 
     return (

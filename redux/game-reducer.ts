@@ -22,7 +22,6 @@ interface GameState {
   isPlaying: boolean;
   opponentMove: string;
   playerName: string;
-  numberOfRounds: number;
   enteredBackground: string;
 }
 // contains all state needed for game to work
@@ -34,7 +33,6 @@ const initialState: GameState = {
   playerReady: false,
   isPlaying: false,
   playerName: "",
-  numberOfRounds: 1,
   enteredBackground: "#ccc",
 };
 // GameSlice redux setup
@@ -46,7 +44,7 @@ const GameSlice = createSlice({
     setUserInfo: (state, action) => {
       const userInput: playerInput = action.payload;
       state.playerName = userInput.playerName;
-      state.numberOfRounds = userInput.enteredRounds;
+      state.scores.rounds = userInput.enteredRounds;
       state.enteredBackground = userInput.enteredBackgroundColor;
       state.isPlaying = true;
     },
@@ -69,13 +67,18 @@ const GameSlice = createSlice({
         return;
       }
       if (state.scores.rounds === 0) {
+        if (state.scores.player > state.scores.opponent) {
+          state.winner = "player";
+        } else {
+          state.winner = "cpu";
+        }
       }
       if (state.playerMove === "rock" && state.opponentMove === "scissors") {
         state.winner = "player";
         state.scores = {
           ...state.scores,
-          rounds: state.scores.rounds--,
-          player: state.scores.player++,
+          rounds: state.scores.rounds - 1,
+          player: state.scores.player + 1,
         };
       } else if (
         state.playerMove === "paper" &&
@@ -84,8 +87,8 @@ const GameSlice = createSlice({
         state.winner = "player";
         state.scores = {
           ...state.scores,
-          rounds: state.scores.rounds--,
-          player: state.scores.player++,
+          rounds: state.scores.rounds - 1,
+          player: state.scores.player + 1,
         };
       } else if (
         state.playerMove === "scissors" &&
@@ -94,23 +97,33 @@ const GameSlice = createSlice({
         state.winner = "player";
         state.scores = {
           ...state.scores,
-          rounds: state.scores.rounds--,
-          player: state.scores.player++,
+          rounds: state.scores.rounds - 1,
+          player: state.scores.player + 1,
         };
       } else if (state.playerMove === state.opponentMove) {
         state.winner = "tie";
-        state.scores = { ...state.scores, rounds: state.scores.rounds-- };
+        state.scores = { ...state.scores, rounds: state.scores.rounds - 1 };
       } else {
         state.winner = "cpu";
         state.scores = {
           ...state.scores,
-          rounds: state.scores.rounds--,
-          opponent: state.scores.opponent++,
+          rounds: state.scores.rounds - 1,
+          opponent: state.scores.opponent + 1,
         };
       }
     },
     nextRound: (state) => {
-        state.winner = null;
+      state.winner = null;
+      state.playerReady = false;
+      state.playerMove = "";
+      state.opponentMove = "";
+    },
+    newGame: (state) => {
+      state.isPlaying = false;
+      state.winner = null;
+      state.playerReady = false;
+      state.playerMove = "";
+      state.opponentMove = "";
     }
   },
 });
