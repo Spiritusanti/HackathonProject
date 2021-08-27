@@ -1,21 +1,28 @@
+// react/nextjs imports
 import type { NextPage } from 'next'
 import { useState } from 'react';
+// redux imports
+import { useSelector, useDispatch } from 'react-redux';
+import Header from '../components/header';
+import { RootState } from '../redux/store';
+import { GameActions } from '../redux/game-reducer';
+// component imports
 import GameComponent from '../components/game/game.component';
 import Win from '../components/game/Win';
 import Lose from '../components/game/Lose';
-import Header from '../components/header';
+
+
+
+
 
 const Game: NextPage = () => {
-    const [winner, setWinner] = useState<String | null>(null);
+    const winner = useSelector((state: RootState) => state.game.winner);
+    const dispatch = useDispatch()
 
-    // winner handler
-    const winnerHandler = (result: string): void => {
-        setWinner(result);
-    }
 
     // next match handler
     const resetWinner = (): void => {
-        setWinner(null);
+        dispatch(GameActions.nextRound);
     }
 
     let content;
@@ -36,7 +43,7 @@ const Game: NextPage = () => {
         </div>
     }
     if (winner === null) {
-        content = <GameComponent winnerHandler={winnerHandler} />
+        content = <GameComponent />
     }
 
     return (

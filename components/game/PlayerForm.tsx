@@ -1,6 +1,10 @@
+// react imports
 import React, { FC, FormEvent, useState } from "react";
+// redux imports
+import { useDispatch } from "react-redux";
+import { GameActions } from "../../redux/game-reducer";
 // playerInput Interface Type
-interface playerInput {
+export interface playerInput {
     playerName: string,
     enteredRounds: number,
     enteredBackgroundColor: string
@@ -11,6 +15,7 @@ const PlayerForm: FC = () => {
     const [numberOfRounds, setNumberOfRounds] = useState<number>(1);
     const [enteredBackground, setEnteredBackground] = useState<string>('#ccc');
     const [error, setError] = useState<string | boolean>(false);
+    const dispatch = useDispatch()
 
 
     // onChange Handlers
@@ -47,8 +52,7 @@ const PlayerForm: FC = () => {
             enteredRounds: numberOfRounds,
             enteredBackgroundColor: enteredBackground,
         }
-
-        console.log(userInput);
+        dispatch(GameActions.setUserInfo(userInput));
         resetInputs();
     }
 

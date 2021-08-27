@@ -1,8 +1,14 @@
-import { FC, useState, useEffect } from "react";
+// react imports
+import { FC } from "react";
+// redux imports
+import { useDispatch, useSelector } from "react-redux";
+import { GameActions } from "../../redux/game-reducer";
+import { RootState } from "../../redux/store";
 // component imports
 import Opponent from "./Opponent";
 import Player from "./Player";
 import PlayerForm from "./PlayerForm";
+import ScoreDisplay from './ScoreDisplay';
 /*
 Need to build in form for user to select rounds and then either Rock, Paper, or Scissors
     --> allow user to add username, select avatar, and add background theme
@@ -14,58 +20,27 @@ then trigger animation based on result of match up
 --> after a timeout add option to play again or quit.
 */
 
-interface GameComponentProps {
-    winnerHandler: (result: string) => void;
-}
 
-const GameComponent: FC<GameComponentProps> = (props) => {
-    const [isPlaying, setIsPlaying] = useState<boolean>(false);
-    const [opponentChoice, setOpponentChoice] = useState<string>('')
-    const [playerChoice, setPlayerChoice] = useState<string>('')
-    console.log(playerChoice, opponentChoice);
+const GameComponent: FC = () => {
+    const dispatch = useDispatch();
+    const isPlaying = useSelector((state: RootState) => state.game.isPlaying)
 
-    // Dev toggle mode handler - remove before final launch
-    const devToggleHandler = (): void => {
-        setIsPlaying(!isPlaying);
+
+    // match start handler
+    const gameHandler = (): void => {
+        dispatch(GameActions.decideWinner);
     }
 
-    // selection handlers for prop drilling!
-    const opponentSelectionHandler = (selection: string): void => {
-        setOpponentChoice(selection);
-    }
-
-    const playerSelectionHandler = (selection: string): void => {
-        setPlayerChoice(selection)
-    }
-
-    // game logic onClick handler
-    const gameHandler = () => {
-        if (playerChoice === '' || opponentChoice === '') {
-            return;
-        }
-        if (playerChoice === "rock" && opponentChoice === "scissors") {
-            props.winnerHandler("player");
-        } else if (playerChoice === "paper" && opponentChoice === "rock") {
-            props.winnerHandler("player");
-        }
-        else if (playerChoice === "scissors" && opponentChoice === "paper") {
-            props.winnerHandler("player");
-        } else if (playerChoice === opponentChoice) {
-            props.winnerHandler("tie");
-        } else {
-            props.winnerHandler('cpu')
-        }
-    }
 
     return (
         <section>
             {!isPlaying && <PlayerForm />}
             {isPlaying && <div>
-                <Player setSelection={playerSelectionHandler} />
-                <Opponent setSelection={opponentSelectionHandler} />
+                <ScoreDisplay />
+                <Player />
+                <Opponent />
                 <button onClick={gameHandler}>Fight!</button>
             </div>}
-            <button onClick={devToggleHandler}>Toggle Mode for Dev</button>
         </section>
     )
 }
