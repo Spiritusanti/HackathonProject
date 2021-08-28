@@ -13,7 +13,7 @@ const Home: NextPage = () => {
       <Header />
       <section>
         {/* hero image section - choose 1 image */}
-        <Image src={NeonJanken} alt="rock paper scissors neon signs" />
+        {/* <Image src={NeonJanken} alt="rock paper scissors neon signs" /> */}
         <Image src={CatJanken} alt="rock paper scissors with cat paws" />
       </section>
       {/* Game Walkthrogh section */}
