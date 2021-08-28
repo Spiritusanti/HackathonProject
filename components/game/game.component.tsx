@@ -24,7 +24,6 @@ then trigger animation based on result of match up
 const GameComponent: FC = () => {
     const dispatch = useDispatch();
     const isPlaying = useSelector((state: RootState) => state.game.isPlaying)
-    console.log(isPlaying);
 
     // match start handler
     const gameHandler = (): void => {
