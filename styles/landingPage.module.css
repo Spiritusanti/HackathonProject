@@ -1,0 +1,167 @@
+/* --accent: #e62c00; */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&family=ZCOOL+KuaiLe&display=swap");
+
+/* header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: black;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+/* nav styles */
+.nav {
+  padding: 0;
+  margin: 0;
+}
+.nav__list {
+  list-style: none;
+  padding: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__list a:hover,
+.nav__list a:focus {
+  color: cyan;
+}
+
+/* hero section */
+
+.hero {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+}
+
+.hero img {
+  width: 100%;
+}
+
+/* walkthough section */
+.walkthrough {
+  font-family: "Press Start 2P", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.walkthrough__nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.walkthrough__nav a {
+  background: rgb(211, 77, 5);
+  padding: 0.5rem 0.75rem;
+  color: cyan;
+  box-shadow: 2px 3px 0 1px cyan;
+}
+
+.walkthrough__nav a:nth-child(2) {
+  background: cyan;
+  color: rgb(211, 77, 5);
+  box-shadow: 2px 3px 0 1px rgb(211, 77, 5);
+}
+
+.walkthrough__nav a:hover {
+  transform: scale(1.01);
+}
+
+/* dev blurb */
+.blurb {
+  text-align: center;
+}
+
+.blurb__content {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 2rem;
+  list-style: none;
+}
+
+.blurb__content p {
+  text-align: left;
+}
+
+.blurb__content img {
+  width: 25rem;
+}
+
+.blurb__content span {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.blurb__content span a {
+  background: rgb(211, 77, 5);
+  padding: 0.5rem 0.75rem;
+  color: cyan;
+  font-weight: bold;
+  box-shadow: 2px 3px 0 1px cyan;
+}
+
+/* footer section */
+.footer ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.footer ul li img {
+  width: 2rem;
+}
+
+/* media queries */
+
+@media screen and (max-width: 600px) {
+  .nav__list {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .walkthrough {
+    text-align: center;
+  }
+
+  .blurb__content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blurb__content span a {
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .footer {
+    text-align: center;
+  }
+
+  .footer ul {
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 1rem;
+  }
+}

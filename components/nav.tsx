@@ -1,10 +1,11 @@
 import { FC } from "react";
 import Link from 'next/link';
+import classes from '../styles/landingPage.module.css';
 
 const Nav: FC = () => {
     return (
-        <nav>
-            <ul>
+        <nav className={classes.nav}>
+            <ul className={classes.nav__list}>
                 <li>
                     <Link href="/">Home</Link>
                 </li>
