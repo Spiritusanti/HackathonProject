@@ -108,12 +108,14 @@ const GameSlice = createSlice({
         };
       }
     },
+    // reset relevant state for next round
     nextRound: (state) => {
       state.winner = null;
       state.playerReady = false;
       state.playerMove = "";
       state.opponentMove = "";
     },
+    // reset state for new game
     newGame: (state) => {
       state.isPlaying = false;
       state.winner = null;
@@ -122,6 +124,7 @@ const GameSlice = createSlice({
       state.opponentMove = "";
       state.scores = { player: 0, opponent: 0, rounds: 1 };
     },
+    // allow user to edit store name if desired
     editName: (state) => {
       state.playerName = "";
     },

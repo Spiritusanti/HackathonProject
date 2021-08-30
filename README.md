@@ -1,23 +1,33 @@
-# Mintbean.io Aug 24-31st Hiring Hackathon Project
-## Objective: build a 2D game of your choice
-    1. game has to be 2D
-    2. Must have a clear win condition
-    3. Must have a clear lose condition
-    4. frontend must be built in JavaScript/Typescript
-    5. Only use packages that can be downloaded with NPM - no professional game engines
-    6. Apllication must hace a clear landing page
+# Rock Paper Scissors
+Rock Paper Scissors game built for the August 2021 mintbean.io Hiring Hackathon.
 
-## Game idea - Rock, Paper, Scissors
-Building as an SPA with NextJs and typescript
-### Landing Page
-1. hero image plus nav at top
-2. quick walkthrough of the game and explanation of how it works
-3. Developer info - all about me and my contact info!
-### Game page
-1. UI - bisected page with CPU and user
-2. first step is to select how many rounds (3, 5, 7)
-3. then it moves to match - CPU randomly selects option from array, user selects from a menu
-4. logic goes through a switch statement comparing CPU and user selection to decide winner
-5. winner decided by who wins most rounds
-6. winning case - confetti???
-7. losing case - whooop whoop wahahahahah.
+## For users
+Users are able to input their name and select the number of rounds in a match. An image will be fetched from robohash.org using the name as a query.
+
+Your opponent is Computer-San who relies on RNGesus to chose their move. Each round can result in a win, a loss, or a tie. 
+
+The Match winner is decided by whomever has the highest score at either the end of all rounds or if winning becomes mathematically impossible for either the player or Computer-San, tied games with no winner are possible.
+
+At the end of a match the user will be presented with the final scoreboard and prompted to play again. If they choose to play again their username will be automatically added to the form with a new button allowing them to edit it.
+
+This app is installable on mobile and can work offline.
+
+## For Developers
+Rock Paper Scissors is a Progressive Web Application built with NextJS (create-next-app), Redux Toolkit, next-pwa, and typescript. 
+
+Redux usage is limited to game logic only and other pages rely on local state if any is used. 
+
+The components folder contains the Header and Nav components along with the game folder. This folder contains all components used in the game itself and funnels through the game.component.tsx file before being passed up to the game.tsx page itself.
+
+CSS files, aside from global.css, are scoped to each page and are imported with the 'module' syntax - comments are present in each file to assist in locating relevant styling for a given component.
+
+robohash.org is used for character animations and unique images are fetched based on the http query used to fetch it. (e.g. https://robohash.org/unique_image). 
+
+### to install and run
+use "npm install" and "npm run dev"
+
+### to report issues
+https://github.com/Spiritusanti/HackathonProject/issues
+
+# Contributors
+1. Jacob McCracken - @Spiritusanti(https://github.com/Spiritusanti)/https://www.linkedin.com/in/jacob-mccracken/
