@@ -52,6 +52,14 @@
   align-items: center;
 }
 
+.walkthrough__computersan {
+  display: inherit;
+}
+
+.walkthrough__computersan img {
+  width: 100%;
+}
+
 .walkthrough__nav {
   display: flex;
   gap: 1rem;
@@ -155,6 +163,10 @@
 
   .walkthrough {
     text-align: center;
+  }
+
+  .walkthrough__computersan {
+    flex-direction: column;
   }
 
   .blurb__content {

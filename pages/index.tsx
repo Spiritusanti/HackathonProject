@@ -32,7 +32,10 @@ const Home: NextPage = () => {
       {/* Game Walkthrogh section */}
       <section className={classes.walkthrough}>
         <h1>Rock Paper Scissors</h1>
-        <p>The classic game you can now play with your constant companion, Computer-san!</p>
+        <p>The classic game you can now play with your constant companion, Computer-san! </p>
+        <span className={classes.walkthrough__computersan}>
+          <Image src={"https://robohash.org/computersan"} alt="computersan" height={200} width={200}></Image>
+        </span>
         <p>Computer-san prays to RNGesus to decide its moves. Unfortunately, RNGesus doesn&apos;t care for silly mortals so you&apos;ll have to rely on your own brain and an approximate 33% chance of success, yikes!</p>
         <p>Can you beat Computer-san?</p>
         <div className={classes.walkthrough__nav}>
