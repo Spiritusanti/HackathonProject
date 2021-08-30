@@ -1,25 +1,31 @@
 // react imports
-import React, { FC, FormEvent, useState, Fragment } from "react";
+import React, { FC, FormEvent, useState, Fragment, useEffect } from "react";
 // redux imports
 import { useDispatch, useSelector } from "react-redux";
 import { GameActions } from "../../redux/game-reducer";
 import { RootState } from "../../redux/store";
+// style imports
+import classes from '../../styles/game.module.css';
 
 // playerInput Interface Type
 export interface playerInput {
     playerName: string,
     enteredRounds: number,
-    enteredBackgroundColor: string
 }
 
 const PlayerForm: FC = () => {
     const [playerName, setPlayerName] = useState<string>('');
     const [numberOfRounds, setNumberOfRounds] = useState<number>(1);
-    const [enteredBackground, setEnteredBackground] = useState<string>('#ccc');
     const [error, setError] = useState<string | boolean>(false);
     const storedPlayerName = useSelector((state: RootState) => state.game.playerName)
     const dispatch = useDispatch()
 
+
+    useEffect(() => {
+        if (storedPlayerName) {
+            setPlayerName(storedPlayerName);
+        }
+    }, [storedPlayerName])
 
     // onChange Handlers
     const playerNameHandler = (event: FormEvent<HTMLInputElement>): void => {
@@ -30,13 +36,8 @@ const PlayerForm: FC = () => {
         setNumberOfRounds(+event.currentTarget.value);
     }
 
-    const backgroundHandler = (event: FormEvent<HTMLSelectElement>): void => {
-        setEnteredBackground(event.currentTarget.value);
-    }
-
     const resetInputs = (): void => {
         setPlayerName('');
-        setEnteredBackground("#CCC");
         setNumberOfRounds(1);
         setError(false);
     }
@@ -53,7 +54,6 @@ const PlayerForm: FC = () => {
         const userInput: playerInput = {
             playerName: playerName,
             enteredRounds: numberOfRounds,
-            enteredBackgroundColor: enteredBackground,
         }
         dispatch(GameActions.setUserInfo(userInput));
         resetInputs();
@@ -61,7 +61,7 @@ const PlayerForm: FC = () => {
 
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className={classes.input_form} onSubmit={submitHandler}>
             <h1>Set your options!</h1>
             <ul>
                 <li>
@@ -74,24 +74,13 @@ const PlayerForm: FC = () => {
                     {error && <p style={{ color: 'red' }}>Please enter a name</p>}
                 </li>
                 <li>
-                    <label htmlFor="rounds">Select number of rounds: </label>
+                    <label htmlFor="rounds">Number of rounds: </label>
                     <select name="rounds" id="rounds" onChange={roundsHandler} value={numberOfRounds}>
                         <option value="choose-option">Choose an option</option>
                         <option value="3">3</option>
                         <option value="5">5</option>
                         <option value="6">7</option>
                         <option value="9">9</option>
-                    </select>
-                </li>
-                <li>
-                    <label htmlFor="background-color">Choose your color: </label>
-                    <select name="background-color" id="background-color" onChange={backgroundHandler} value={enteredBackground}>
-                        <option value="choose-option">Choose an option</option>
-                        <option value="#789DF5">#789DF5</option>
-                        <option value="#0032A3">#0032A3</option>
-                        <option value="#EBA707">#EBA707</option>
-                        <option value="#FCF9F0">#FCF9F0</option>
-                        <option value="#A38848">#A38848</option>
                     </select>
                 </li>
             </ul>

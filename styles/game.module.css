@@ -1,0 +1,173 @@
+/* Game component */
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game__cards {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.game__controls {
+  width: 100%;
+}
+
+.game__fightButton {
+  display: flex;
+  justify-content: center;
+}
+
+.game__container button {
+  font-family: inherit;
+  border: none;
+  width: 35%;
+  background: rgb(211, 77, 5);
+  padding: 0.5rem 0.75rem;
+  color: cyan;
+  font-weight: bold;
+  box-shadow: 2px 3px 0 1px cyan;
+  cursor: pointer;
+}
+
+/* player form styles */
+.input_form {
+  width: 95%;
+  padding: 1rem;
+  background: #0f73d4;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px white;
+  border-radius: 5px;
+}
+
+.input_form ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.input_form ul li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.input_form input {
+  border: none;
+  font-family: inherit;
+}
+
+.input_form select {
+  border: none;
+  font-family: inherit;
+}
+
+/* scoreboard styles */
+.scoreboard {
+  border: 1px solid rgb(211, 77, 5);
+  border-radius: 5px;
+  box-shadow: 0 2px 12px rgb(211, 77, 5);
+  padding: 2rem;
+}
+
+.scoreboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scoreboard ul li {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* player styles */
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.player img {
+  background: #19d4cd;
+}
+
+.player__input {
+  padding-bottom: 1rem;
+}
+
+.player__input ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.player__input ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.player__input ul li:nth-child(3) {
+  padding-bottom: 1rem;
+}
+
+/* win/lose screens */
+.result__display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* 
+===================
+  media queries 
+===================
+*/
+/* input form */
+@media screen and (max-width: 600px) {
+  .input_form {
+    text-align: center;
+  }
+
+  .input_form ul li {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .input_form input {
+    padding: 1rem;
+  }
+
+  .input_form select {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+
+/* game ui*/
+@media screen and (max-width: 600px) {
+  .game__cards {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .player__input ul li {
+    padding: 2rem 0;
+  }
+}

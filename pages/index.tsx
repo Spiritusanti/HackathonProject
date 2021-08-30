@@ -12,13 +12,22 @@ import profileImage from '../assests/profileImage.jpg';
 import classes from '../styles/landingPage.module.css';
 
 
+interface colors {
+  id: number;
+  color: string;
+}
+
 const Home: NextPage = () => {
+  const colors: colors[] = [{ id: 1, color: '#D45B19' }, { id: 2, color: '#C2D419' }, { id: 3, color: '#19D4CD' }, { id: 4, color: '#7E0FD4' }, { id: 5, color: '#40D419' }, { id: 6, color: '#1D19D4' }];
+
   return (
     <article>
       <Header />
       <section className={classes.hero}>
         {/* hero image section - choose 1 image */}
-        <Image src={CatJanken} alt="rock paper scissors with cat paws" />
+        {
+          colors.map((color) => <div key={color.id} style={{ background: `${color.color}` }}><Image width={200} height={200} src={`https://robohash.org/${color.id}`} alt='robot'></Image></div>)
+        }
       </section>
       {/* Game Walkthrogh section */}
       <section className={classes.walkthrough}>
@@ -54,17 +63,15 @@ const Home: NextPage = () => {
           <ul>
             <li>
               <label htmlFor="twitter">twitter</label>
-              <a id="twitter" href="https://twitter.com/balorformorian"><Image src={TwitterIcon} alt="twitter icon"></Image></a>
+              <a id="twitter" href="https://twitter.com/balorformorian"><Image src={TwitterIcon} alt="twitter icon" /></a>
             </li>
             <li>
               <label htmlFor="linkedIn">LinkedIn</label>
-              <a id="linkedIn" href="https://twitter.com/balorformorian"><Image width="48px" height="48px" src={LinkedInIcon} alt="twitter icon"></Image></a>
+              <a id="linkedIn" href="https://twitter.com/balorformorian"><Image width="48px" height="48px" src={LinkedInIcon} alt="twitter icon" /></a>
             </li>
           </ul>
         </ul>
-        <a href="https://www.vecteezy.com/free-vector/rock-paper-scissors-game">Rock Paper Scissors Game Paws SVG by Vecteezy</a>
       </footer>
-
     </article>
   )
 }

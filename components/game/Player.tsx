@@ -7,6 +7,8 @@ import { RootState } from "../../redux/store";
 import { GameActions } from "../../redux/game-reducer";
 // other imports
 import playerImage from '../../assests/xelor_by_yuejeancarlos19-d6mvio3.jpg';
+// style imports
+import classes from '../../styles/game.module.css';
 
 
 
@@ -37,32 +39,30 @@ const Player: FC = () => {
     if (playerReady) {
         content = <h1>Ready!</h1>
     } else {
-        content = <form onSubmit={playerChoiceSubmitHandler}>
+        content = <form onSubmit={playerChoiceSubmitHandler} className={classes.player__input}>
             <h1>Choose your move!</h1>
-            <div>
-                <ul>
-                    <li>
-                        <label htmlFor="rock">Rock</label>
-                        <input type="radio" name="player-choice" id="rock" value="rock" onChange={onInputSelection} />
-                    </li>
-                    <li>
-                        <label htmlFor="paper">Paper</label>
-                        <input type="radio" name="player-choice" id="paper" value="paper" onChange={onInputSelection} />
-                    </li>
-                    <li>
-                        <label htmlFor="scissors">Scissors</label>
-                        <input type="radio" name="player-choice" id="scissors" value="scissors" onChange={onInputSelection} />
-                    </li>
-                </ul>
-            </div>
+            <ul>
+                <li>
+                    <label htmlFor="rock">Rock</label>
+                    <input type="radio" name="player-choice" id="rock" value="rock" onChange={onInputSelection} />
+                </li>
+                <li>
+                    <label htmlFor="paper">Paper</label>
+                    <input type="radio" name="player-choice" id="paper" value="paper" onChange={onInputSelection} />
+                </li>
+                <li>
+                    <label htmlFor="scissors">Scissors</label>
+                    <input type="radio" name="player-choice" id="scissors" value="scissors" onChange={onInputSelection} />
+                </li>
+            </ul>
             <button type="submit">Ready!</button>
         </form>
     }
     return (
-        <section>
+        <section className={classes.player}>
             <div className="player-info">
                 <h1>{playerName}</h1>
-                <Image src={playerImage} alt="player avatar" width={"250px"} height={"250px"} />
+                <Image src={`https://robohash.org/${playerName}`} alt="player avatar" width={"250px"} height={"250px"} />
             </div>
             {content}
         </section>

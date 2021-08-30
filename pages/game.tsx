@@ -10,7 +10,9 @@ import { GameActions } from '../redux/game-reducer';
 import GameComponent from '../components/game/game.component';
 import Win from '../components/game/Win';
 import Lose from '../components/game/Lose';
-
+import ScoreDisplay from '../components/game/ScoreDisplay';
+// style imports
+import classes from '../styles/game.module.css';
 
 
 
@@ -19,6 +21,7 @@ const Game: NextPage = () => {
     const winner = useSelector((state: RootState) => state.game.winner);
     const scores = useSelector((state: RootState) => state.game.scores);
     const isPlaying = useSelector((state: RootState) => state.game.isPlaying);
+    const playerMove = useSelector((state: RootState) => state.game.playerMove);
     const dispatch = useDispatch()
 
     // next match handler
@@ -43,8 +46,9 @@ const Game: NextPage = () => {
         </div>
     }
     if (winner === 'tie') {
-        content = <div>
+        content = <div className={classes.result__display}>
             <h1>Its a tie!</h1>
+            <p>{`You both chose ${playerMove}`}</p>
             <button onClick={resetWinner}>Next Round!</button>
         </div>
     }
@@ -52,15 +56,17 @@ const Game: NextPage = () => {
         content = <GameComponent />
     }
 
-    if (isPlaying && scores.player > scores.rounds / 2) {
+    if (isPlaying && scores.player > scores.opponent + scores.rounds) {
         content = <Fragment>
             <h1>You are victoriuos!</h1>
+            <ScoreDisplay />
             <button onClick={newGame}>Play again!</button>
         </Fragment>
     }
-    if (isPlaying && scores.opponent > scores.rounds / 2) {
+    if (isPlaying && scores.opponent > scores.player + scores.rounds) {
         content = <Fragment>
             <h1>You have been vanquished!</h1>
+            <ScoreDisplay />
             <button onClick={newGame}>Play again!</button>
         </Fragment>
     }
@@ -68,6 +74,7 @@ const Game: NextPage = () => {
         content = <Fragment>
             {/* add a sudden death mode? */}
             <h1>Its a tie! Nobody wins!</h1>
+            <ScoreDisplay />
             <button onClick={newGame}>Play again!</button>
         </Fragment>
     }
@@ -75,7 +82,7 @@ const Game: NextPage = () => {
     return (
         <article>
             <Header />
-            <div>
+            <div className={classes.game__container}>
                 {content}
             </div>
         </article>

@@ -10,7 +10,6 @@ export interface score {
 export interface playerInput {
   playerName: string;
   enteredRounds: number;
-  enteredBackgroundColor: string;
 }
 
 // interface for full game state
@@ -22,7 +21,6 @@ interface GameState {
   isPlaying: boolean;
   opponentMove: string;
   playerName: string;
-  enteredBackground: string;
 }
 // contains all state needed for game to work
 const initialState: GameState = {
@@ -33,7 +31,6 @@ const initialState: GameState = {
   playerReady: false,
   isPlaying: false,
   playerName: "",
-  enteredBackground: "#ccc",
 };
 // GameSlice redux setup
 const GameSlice = createSlice({
@@ -45,7 +42,6 @@ const GameSlice = createSlice({
       const userInput: playerInput = action.payload;
       state.playerName = userInput.playerName;
       state.scores.rounds = userInput.enteredRounds;
-      state.enteredBackground = userInput.enteredBackgroundColor;
       state.isPlaying = true;
     },
     // determines opponent move based on Math.random() after user selects move.
@@ -124,7 +120,8 @@ const GameSlice = createSlice({
       state.playerReady = false;
       state.playerMove = "";
       state.opponentMove = "";
-    }
+      state.scores = { player: 0, opponent: 0, rounds: 1 };
+    },
   },
 });
 

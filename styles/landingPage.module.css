@@ -1,13 +1,9 @@
-/* --accent: #e62c00; */
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Russo+One&family=ZCOOL+KuaiLe&display=swap");
-
 /* header styles */
 .header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
   background: black;
-  font-family: "Press Start 2P", sans-serif;
 }
 
 .title {
@@ -139,10 +135,10 @@
 }
 
 .footer ul li a {
-    padding: 0.25rem;
-    display: inherit;
-    justify-content: inherit;
-    align-items: inherit;
+  padding: 0.25rem;
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
 }
 
 .footer ul li img {
@@ -174,5 +170,13 @@
 
   .footer {
     text-align: center;
+  }
+
+  .footer ul {
+    flex-direction: column;
+  }
+  
+  .footer ul li a {
+    padding: 1rem;
   }
 }

@@ -3,11 +3,13 @@ import { FC } from "react";
 // redux imports
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+// style imports
+import classes from '../../styles/game.module.css';
 
 const ScoreDisplay: FC = () => {
     const { rounds, player, opponent } = useSelector((state: RootState) => state.game.scores);
     return (
-        <div>
+        <div className={classes.scoreboard}>
             <h1>Scoreboard</h1>
             <ul>
                 <li>

@@ -1,14 +1,14 @@
 import { FC } from "react";
 import Image from "next/image";
-import playerImage from '../../assests/xelor_by_yuejeancarlos19-d6mvio3.jpg';
-
+import classes from '../../styles/game.module.css';
 
 const Opponent: FC = () => {
     return (
         <section>
-            <div className="player-info">
-                <h1>Opponent Name</h1>
-                <Image src={playerImage} alt="opponent avatar" width={"250px"} height={"250px"} />
+            <div className={classes.player}>
+                <h1>Computer-san</h1>
+                <Image src={"https://robohash.org/computersan"} alt="opponent avatar" width={"250px"} height={"250px"} />
+                <h1>Praying to RNGesus!</h1>
             </div>
         </section>
     )
