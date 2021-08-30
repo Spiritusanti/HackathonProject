@@ -3,7 +3,7 @@ Rock Paper Scissors game built for the August 2021 mintbean.io Hiring Hackathon.
 
 ## For users
 Users are able to input their name and select the number of rounds in a match. An image will be fetched from robohash.org using the name as a query.
-![Alt text]( HackathonProject/public/readmeImages/playerform.png )
+![Alt Player Input Form](Image /public/readmeImages/playerform.png )
 Your opponent is Computer-San who relies on RNGesus to chose their move. Each round can result in a win, a loss, or a tie. 
 
 The Match winner is decided by whomever has the highest score at either the end of all rounds or if winning becomes mathematically impossible for either the player or Computer-San, tied games with no winner are possible.
