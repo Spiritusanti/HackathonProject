@@ -42,6 +42,10 @@ const PlayerForm: FC = () => {
         setError(false);
     }
 
+    const editNameHandler = (): void => {
+        dispatch(GameActions.editName());
+    }
+
 
     // submit Handler
     const submitHandler = (event: FormEvent<HTMLFormElement>) => {
@@ -84,7 +88,10 @@ const PlayerForm: FC = () => {
                     </select>
                 </li>
             </ul>
-            <button type="submit">Submit</button>
+            <div className={classes.button__container}>
+                <button type="submit">Submit</button>
+                {storedPlayerName !== '' && <button type="button" onClick={editNameHandler}>Edit Name</button>}
+            </div>
         </form>
     )
 }

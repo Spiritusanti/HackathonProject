@@ -1,6 +1,5 @@
 // react/nextjs imports
 import type { NextPage } from 'next'
-import { Fragment } from 'react';
 // redux imports
 import { useSelector, useDispatch } from 'react-redux';
 import Header from '../components/header';
@@ -57,26 +56,26 @@ const Game: NextPage = () => {
     }
 
     if (isPlaying && scores.player > scores.opponent + scores.rounds) {
-        content = <Fragment>
+        content = <div className={classes.results}>
             <h1>You are victoriuos!</h1>
             <ScoreDisplay />
             <button onClick={newGame}>Play again!</button>
-        </Fragment>
+        </div>
     }
     if (isPlaying && scores.opponent > scores.player + scores.rounds) {
-        content = <Fragment>
+        content = <div className={classes.results}>
             <h1>You have been vanquished!</h1>
             <ScoreDisplay />
             <button onClick={newGame}>Play again!</button>
-        </Fragment>
+        </div>
     }
     if (isPlaying && scores.rounds === 0 && scores.player === scores.opponent) {
-        content = <Fragment>
+        content = <div className={classes.results}>
             {/* add a sudden death mode? */}
             <h1>Its a tie! Nobody wins!</h1>
             <ScoreDisplay />
             <button onClick={newGame}>Play again!</button>
-        </Fragment>
+        </div>
     }
 
     return (

@@ -72,6 +72,17 @@
   font-family: inherit;
 }
 
+.button__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.button__container button {
+  width: 100%;
+}
+
 /* scoreboard styles */
 .scoreboard {
   border: 1px solid rgb(211, 77, 5);
@@ -133,6 +144,15 @@
   flex-direction: column;
 }
 
+.results {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 /* 
 ===================
   media queries 
@@ -159,7 +179,6 @@
   }
 }
 
-
 /* game ui*/
 @media screen and (max-width: 600px) {
   .game__cards {
@@ -169,5 +188,34 @@
 
   .player__input ul li {
     padding: 2rem 0;
+  }
+
+  .player__input button {
+    margin-top: 2rem;
+    width: 80%;
+    padding: 1.5rem 0;
+  }
+
+  .game__fightButton button {
+    width: 80%;
+    padding: 2rem 0;
+  }
+
+  .result__display {
+    text-align: center;
+  }
+
+  .results button {
+    margin-top: 1rem;
+    width: 80%;
+    padding: 2rem 0;
+  }
+
+  .button__container {
+    flex-direction: column;
+  }
+
+  .button__container button {
+    padding: 2rem 4rem;
   }
 }

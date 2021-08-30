@@ -122,6 +122,9 @@ const GameSlice = createSlice({
       state.opponentMove = "";
       state.scores = { player: 0, opponent: 0, rounds: 1 };
     },
+    editName: (state) => {
+      state.playerName = "";
+    },
   },
 });
 
