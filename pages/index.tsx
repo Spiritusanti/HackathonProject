@@ -22,13 +22,6 @@ const Home: NextPage = () => {
   const colorsReverse: colors[] = [{ id: 5, color: '#7E0FD4' }, { id: 6, color: '#D45B19' }, { id: 7, color: '#C2D419' }, { id: 8, color: '#19D4CD' },];
   return (
     <article>
-      <Head>
-        <title>Rock Paper Scissors</title>
-        <meta property="og:title" content="Rock Paper Scissors" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="Description" content="rock paper scissors 2D game" />
-        <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-      </Head>
       <Header />
       <section className={classes.hero}>
         {/* hero image section - choose 1 image */}

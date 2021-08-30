@@ -81,13 +81,6 @@ const Game: NextPage = () => {
 
     return (
         <article>
-            <Head>
-                <title>Rock Paper Scissors</title>
-                <meta property="og:title" content="Rock Paper Scissors" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="Description" content="rock paper scissors 2D game" />
-                <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-            </Head>
             <Header />
             <div className={classes.game__container}>
                 {content}
