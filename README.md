@@ -30,10 +30,10 @@ CSS files, aside from global.css, are scoped to each page and are imported with 
 
 robohash.org is used for character animations and unique images are fetched based on the http query used to fetch it. (e.g. https://robohash.org/unique_image). 
 
-### to install and run
+### To install and run
 use "npm install" and "npm run dev"
 
-### to report issues
+### To report issues
 https://github.com/Spiritusanti/HackathonProject/issues
 
 # Contributors
