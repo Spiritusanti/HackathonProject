@@ -5,6 +5,7 @@
   "display": "standalone",
   "background_color": "black",
   "description": "Rock paper scissors 2D game",
+  "prefer_related_applications": "false",
   "icons": [
     {
       "src": "/favicon-16x16.png",
