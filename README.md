@@ -38,3 +38,6 @@ https://github.com/Spiritusanti/HackathonProject/issues
 
 # Contributors
 1. Jacob McCracken - @Spiritusanti(https://github.com/Spiritusanti)/https://www.linkedin.com/in/jacob-mccracken/
+
+
+#License - MIT
