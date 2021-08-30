@@ -1,4 +1,5 @@
 import { NextPage } from "next"
+import Head from "next/head"
 import Link from "next/link"
 import { useState, Fragment } from "react"
 import Iframe from "react-iframe"
@@ -13,6 +14,13 @@ const RickRolled: NextPage = () => {
 
     return (
         <section>
+            <Head>
+                <title>Rock Paper Scissors</title>
+                <meta property="og:title" content="Rock Paper Scissors" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="Description" content="rock paper scissors 2D game" />
+                <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+            </Head>
             {!wrathConsent && <div className={classes.consent}>
                 <h1>You fool! No place is safe from Computer-San!</h1>
                 <p>Now you must suffer their wrath!</p>

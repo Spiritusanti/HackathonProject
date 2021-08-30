@@ -40,8 +40,13 @@
   justify-content: center;
 }
 
-.hero img {
-  width: 100%;
+.hero ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* walkthough section */
@@ -66,7 +71,7 @@
 }
 
 .walkthrough__nav a {
-  background: #0B0037;
+  background: #0b0037;
   padding: 0.5rem 0.75rem;
   color: rgb(211, 77, 5);
   box-shadow: 2px 3px 0 1px rgb(211, 77, 5);
@@ -74,8 +79,8 @@
 
 .walkthrough__nav a:nth-child(2) {
   background: rgb(211, 77, 5);
-  color: #0B0037;
-  box-shadow: 2px 3px 0 1px #0B0037;
+  color: #0b0037;
+  box-shadow: 2px 3px 0 1px #0b0037;
 }
 
 .walkthrough__nav a:hover {
@@ -85,6 +90,8 @@
 /* dev blurb */
 .blurb {
   text-align: center;
+  background: #19D4CD;
+  color: #0b0037;
 }
 
 .blurb__content {

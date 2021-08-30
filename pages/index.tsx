@@ -2,9 +2,9 @@
 import type { NextPage } from 'next'
 import Image from 'next/dist/client/image'
 import Link from 'next/dist/client/link';
+import Head from 'next/head';
 // component imports
 import Header from '../components/header';
-import CatJanken from '../assests/paw-sign-of-rock-paper-scissors-game.svg';
 import TwitterIcon from '../assests/icons8-twitter.svg';
 import LinkedInIcon from '../assests/linkedin-svgrepo-com.svg';
 import profileImage from '../assests/profileImage.jpg';
@@ -18,16 +18,28 @@ interface colors {
 }
 
 const Home: NextPage = () => {
-  const colors: colors[] = [{ id: 1, color: '#D45B19' }, { id: 2, color: '#C2D419' }, { id: 3, color: '#19D4CD' }, { id: 4, color: '#7E0FD4' }, { id: 5, color: '#40D419' }, { id: 6, color: '#1D19D4' }];
-
+  const colors: colors[] = [{ id: 1, color: '#D45B19' }, { id: 2, color: '#C2D419' }, { id: 3, color: '#19D4CD' }, { id: 4, color: '#7E0FD4' }];
+  const colorsReverse: colors[] = [{ id: 5, color: '#7E0FD4' }, { id: 6, color: '#D45B19' }, { id: 7, color: '#C2D419' }, { id: 8, color: '#19D4CD' },];
   return (
     <article>
+      <Head>
+        <title>Rock Paper Scissors</title>
+        <meta property="og:title" content="Rock Paper Scissors" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="Description" content="rock paper scissors 2D game" />
+        <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+      </Head>
       <Header />
       <section className={classes.hero}>
         {/* hero image section - choose 1 image */}
-        {
-          colors.map((color) => <div key={color.id} style={{ background: `${color.color}` }}><Image width={200} height={200} src={`https://robohash.org/${color.id}`} alt='robot'></Image></div>)
-        }
+        <ul>
+          <li>{colors.map((color) => <div key={color.id} style={{ background: `${color.color}` }}><Image width={200} height={200} src={`https://robohash.org/${color.id}`} alt='robot'></Image></div>)}</li>
+          <li>{colorsReverse.map((color) => <div key={color.id} style={{ background: `${color.color}` }}><Image width={200} height={200} src={`https://robohash.org/${color.id}`} alt='robot'></Image></div>)}</li>
+          <li>{colors.map((color) => <div key={color.id} style={{ background: `${color.color}` }}><Image width={200} height={200} src={`https://robohash.org/${color.id}`} alt='robot'></Image></div>)}</li>
+          <li>{colorsReverse.map((color) => <div key={color.id} style={{ background: `${color.color}` }}><Image width={200} height={200} src={`https://robohash.org/${color.id}`} alt='robot'></Image></div>)}</li>
+          <li>{colors.map((color) => <div key={color.id} style={{ background: `${color.color}` }}><Image width={200} height={200} src={`https://robohash.org/${color.id}`} alt='robot'></Image></div>)}</li>
+        </ul>
+
       </section>
       {/* Game Walkthrogh section */}
       <section className={classes.walkthrough}>
@@ -63,16 +75,14 @@ const Home: NextPage = () => {
       <footer className={classes.footer}>
         <h1>connect with me</h1>
         <ul>
-          <ul>
-            <li>
-              <label htmlFor="twitter">twitter</label>
-              <a id="twitter" href="https://twitter.com/balorformorian"><Image src={TwitterIcon} alt="twitter icon" /></a>
-            </li>
-            <li>
-              <label htmlFor="linkedIn">LinkedIn</label>
-              <a id="linkedIn" href="https://twitter.com/balorformorian"><Image width="48px" height="48px" src={LinkedInIcon} alt="twitter icon" /></a>
-            </li>
-          </ul>
+          <li>
+            <label htmlFor="twitter">twitter</label>
+            <a id="twitter" href="https://twitter.com/balorformorian"><Image src={TwitterIcon} alt="twitter icon" /></a>
+          </li>
+          <li>
+            <label htmlFor="linkedIn">LinkedIn</label>
+            <a id="linkedIn" href="https://twitter.com/balorformorian"><Image width="48px" height="48px" src={LinkedInIcon} alt="twitter icon" /></a>
+          </li>
         </ul>
       </footer>
     </article>
