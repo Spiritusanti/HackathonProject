@@ -74,7 +74,7 @@ const Home: NextPage = () => {
           </li>
           <li>
             <label htmlFor="linkedIn">LinkedIn</label>
-            <a id="linkedIn" href="https://twitter.com/balorformorian"><Image width="48px" height="48px" src={LinkedInIcon} alt="twitter icon" /></a>
+            <a id="linkedIn" href="https://www.linkedin.com/in/jacob-mccracken/"><Image width="48px" height="48px" src={LinkedInIcon} alt="twitter icon" /></a>
           </li>
         </ul>
       </footer>
