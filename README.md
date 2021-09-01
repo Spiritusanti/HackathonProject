@@ -1,14 +1,21 @@
 # Rock Paper Scissors
 Rock Paper Scissors game built for the August 2021 mintbean.io Hiring Hackathon.
 
+![Alt landing page](/public/readmeImages/landingpage.png)
+
 ## For users
 Users are able to input their name and select the number of rounds in a match. An image will be fetched from robohash.org using the name as a query.
 
-Your opponent is Computer-San who relies on RNGesus to chose their move. Each round can result in a win, a loss, or a tie. 
+![Alt Player Input Form](/public/readmeImages/playerform.png )
+![Alt Game page after user input](/public/readmeImages/firstRound.png)
 
-The Match winner is decided by whomever has the highest score at either the end of all rounds or if winning becomes mathematically impossible for either the player or Computer-San, tied games with no winner are possible.
+Your opponent is Computer-San who relies on RNGesus to chose their move. Each round can result in a win, a loss, or a tie.
 
-At the end of a match the user will be presented with the final scoreboard and prompted to play again. If they choose to play again their username will be automatically added to the form with a new button allowing them to edit it.
+![Alt Loss screen](/public/readmeImages/lost.png)
+
+The Match winner is decided by whomever has the highest score at either the end of all rounds or if winning becomes mathematically impossible for either the player or Computer-San, tied games with no winner are possible. At the end of a game the user will be presented with the final scoreboard and prompted to play again. If they choose to play again their username will be automatically added to the form with a new button allowing them to edit it.
+![Alt Tie screen](/public/readmeImages/finalTie.png)
+![Alt User form with saved user](/public/readmeImages/formWithSaveUser.png)
 
 This app is installable on mobile and can work offline.
 
@@ -23,11 +30,14 @@ CSS files, aside from global.css, are scoped to each page and are imported with 
 
 robohash.org is used for character animations and unique images are fetched based on the http query used to fetch it. (e.g. https://robohash.org/unique_image). 
 
-### to install and run
+### To install and run
 use "npm install" and "npm run dev"
 
-### to report issues
+### To report issues
 https://github.com/Spiritusanti/HackathonProject/issues
 
 # Contributors
 1. Jacob McCracken - @Spiritusanti(https://github.com/Spiritusanti)/https://www.linkedin.com/in/jacob-mccracken/
+
+
+# License - MIT
